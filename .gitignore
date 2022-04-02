@@ -1,3 +1,6 @@
+# main node modules folder for monorepo project
 /node_modules
-
-*/*/*/node_modules
+# node modules folder for next web project
+*/*/organizer/node_modules
+# development folder
+packages/front/organizer/.next
