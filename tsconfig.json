@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "baseUrl": ".",
+    "moduleResolution": "Node",
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "lib": ["esnext"],
+    "esModuleInterop": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true
+  },
+  "references": [
+    {
+      "path": "packages/organizer"
+    }
+  ],
+  "exclude": ["node_modules", "dist", "*.d.ts"]
+}
