@@ -1,0 +1,29 @@
+version: "2.3.3"
+
+services:
+  db_mysql:
+    image: mysql
+    ports:
+      - 8000:80
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: users
+    volumes:
+      - auth-service:/var/libs/mysql
+  app:
+    container_name: auth-service
+    image: openjdk:11
+    working_dir: /spring/auth-service
+    volumes:
+      - ./:/spring/auth-service
+    command: sh -c "./mvnw spring-boot:run"
+    ports:
+      - 4000:8080
+    environment:
+      MYSQL_HOST: db_mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: users
+
+volumes:
+  auth-service:
