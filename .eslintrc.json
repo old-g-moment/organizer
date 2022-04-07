@@ -14,5 +14,5 @@
     "es6": true,
     "node": true
   },
-  "ignorePatterns": ["dist", "node_modules", "examples", "scripts", "*.json"]
+  "ignorePatterns": ["dist", "node_modules", "examples", "scripts"]
 }
