@@ -4,7 +4,8 @@ import lombok.Builder;
 
 @Builder
 public class AuthorModel {
-    private Integer id;
-    private String firstName;
-    private String lastName;
+
+  private Integer id;
+  private String firstName;
+  private String lastName;
 }

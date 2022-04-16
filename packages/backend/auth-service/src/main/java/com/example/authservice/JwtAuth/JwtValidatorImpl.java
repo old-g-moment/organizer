@@ -7,18 +7,19 @@ import lombok.NonNull;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 class JwtValidatorImpl implements JwtValidator {
-    private static JwtValidatorImpl instance;
 
-    public static JwtValidator getInstance() {
-        if (instance == null) {
-            instance = new JwtValidatorImpl();
-            return instance;
-        }
-        return instance;
-    }
+  private static JwtValidatorImpl instance;
 
-    @Override
-    public boolean checkJwtToken(@NonNull String token) {
-        return true;
+  public static JwtValidator getInstance() {
+    if (instance == null) {
+      instance = new JwtValidatorImpl();
+      return instance;
     }
+    return instance;
+  }
+
+  @Override
+  public boolean checkJwtToken(@NonNull String token) {
+    return true;
+  }
 }

@@ -9,8 +9,14 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class BookResolver implements GraphQLQueryResolver {
-    public BookModel bookById(Integer id) {
-        log.info(id.toString());
-        return BookModel.builder().id(id).name("harry pothed").pageCount(300).author(AuthorModel.builder().build()).build();
-    }
+
+  public BookModel bookById(Integer id) {
+    log.info(id.toString());
+    return BookModel.builder()
+        .id(id)
+        .name("harry pothed")
+        .pageCount(300)
+        .author(AuthorModel.builder().build())
+        .build();
+  }
 }
