@@ -1,25 +1,24 @@
 package com.example.authservice.JwtAuth;
 
 import com.example.authservice.Interfaces.JwtValidator;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Slf4j
+@Component
 class JwtValidatorImpl implements JwtValidator {
 
-  private static JwtValidatorImpl instance;
+  private final String issuer;
 
-  public static JwtValidator getInstance() {
-    if (instance == null) {
-      instance = new JwtValidatorImpl();
-      return instance;
-    }
-    return instance;
+  public JwtValidatorImpl(@Value("${envs.issuer}") String issuer) {
+    this.issuer = issuer;
   }
 
   @Override
   public boolean checkJwtToken(@NonNull String token) {
+    log.info("ISSUER VALUE: " + issuer);
     return true;
   }
 }

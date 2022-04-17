@@ -1,5 +1,6 @@
 package com.example.authservice.JwtAuth;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,10 +16,13 @@ import java.io.IOException;
 
 @Configuration
 public class RequestFilter extends OncePerRequestFilter {
-
+  private JwtValidatorImpl jwtValidator;
+  public RequestFilter(JwtValidatorImpl jwtValidator) {
+    this.jwtValidator = jwtValidator;
+  }
   @Override
-  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-      FilterChain filterChain) throws ServletException, IOException {
+  protected void doFilterInternal(HttpServletRequest request, @NotNull HttpServletResponse response,
+      @NotNull FilterChain filterChain) throws ServletException, IOException {
     if (request.getHeader(HttpHeaders.AUTHORIZATION) == null || !request.getHeader(
         HttpHeaders.AUTHORIZATION).startsWith("Bearer ")) {
       filterChain.doFilter(request, response);
@@ -27,7 +31,7 @@ public class RequestFilter extends OncePerRequestFilter {
 
     final String token = request.getHeader(HttpHeaders.AUTHORIZATION).split(" ")[1];
 
-    if (!JwtValidatorImpl.getInstance().checkJwtToken(token)) {
+    if (!jwtValidator.checkJwtToken(token)) {
       filterChain.doFilter(request, response);
       return;
     }
