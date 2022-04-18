@@ -1,8 +1,10 @@
 package com.example.authservice.Interfaces;
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import lombok.NonNull;
 
 public interface JwtValidator {
 
-  boolean checkJwtToken(@NonNull String token, @NonNull String secret, @NonNull String issue);
+  DecodedJWT checkJwtToken(@NonNull String token) throws JWTVerificationException;
 }

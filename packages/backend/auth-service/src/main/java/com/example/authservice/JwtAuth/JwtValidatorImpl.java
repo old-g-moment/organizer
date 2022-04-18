@@ -9,31 +9,28 @@ import com.example.authservice.Interfaces.JwtValidator;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-class JwtValidatorImpl implements JwtValidator {
-  private static JwtValidatorImpl instance;
+public class JwtValidatorImpl implements JwtValidator {
 
-  public static JwtValidatorImpl getInstance() {
+  private static JwtValidatorImpl instance;
+  private static JWTVerifier jwtVerifier;
+
+  public static JwtValidatorImpl getInstance(@NonNull String secret, @NonNull String issuer) {
     if (instance == null) {
       instance = new JwtValidatorImpl();
     }
+    jwtVerifier = JWT.require(Algorithm.HMAC256(secret)).withIssuer(issuer)
+        .build();
     return instance;
   }
 
   @Override
-  public boolean checkJwtToken(@NonNull String token, @NonNull String secret, @NonNull String issuer) {
-    log.info("ISSUER VALUE: " + issuer);
-    final JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(secret)).withIssuer(issuer).build();
-    try {
-      DecodedJWT verify = jwtVerifier.verify(token);
-      System.out.println(verify.getClaims());
-    } catch (final JWTVerificationException error) {
-      error.printStackTrace();
-      return false;
+  public DecodedJWT checkJwtToken(@NonNull String token) throws JWTVerificationException {
+    DecodedJWT verify = jwtVerifier.verify(token);
+    if (!verify.getClaims().containsKey("email") || !verify.getClaims().containsKey("password")) {
+      throw new JWTVerificationException("No required fields in the JWT");
     }
-    return true;
+    return verify;
   }
 }
