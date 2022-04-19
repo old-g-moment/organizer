@@ -1,10 +1,10 @@
 {
-  "name": "@organizer/frontend",
-  "version": "1.0.0",
-  "private": false,
+  "name": "@g.organizer/frontend",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn lint:fix && yarn test && next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "yarn lint --fix",
