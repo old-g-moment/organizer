@@ -10,6 +10,7 @@ public class AuthController {
 
   @GetMapping
   public String get() {
+    System.out.println("TEST");
     return "Auth get";
   }
 }
