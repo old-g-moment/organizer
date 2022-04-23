@@ -1,0 +1,23 @@
+{
+  "name": "@organizer/common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "source": "src/index.ts",
+  "types": "src/types.d.ts",
+  "scripts": {
+    "build": "parcel build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.1",
+    "parcel": "^2.4.1",
+    "typescript": "^4.6.3"
+  }
+}

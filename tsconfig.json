@@ -19,6 +19,9 @@
   "references": [
     {
       "path": "packages/organizer"
+    },
+    {
+      "path": "packages/common"
     }
   ],
   "exclude": ["node_modules", "dist", "*.d.ts"]
