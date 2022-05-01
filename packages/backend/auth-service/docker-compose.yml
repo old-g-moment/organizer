@@ -1,5 +1,3 @@
-version: "2.3.3"
-
 services:
   db_mysql:
     image: mysql

@@ -1,0 +1,15 @@
+type User {
+    id:Int,
+    email: String!,
+    token: String!
+    password: String!,
+}
+type UserCredentials {
+    id:Int,
+    email: String!,
+    token: String!,
+    password: String!,
+    name: String,
+    surname: String,
+    nickname: String
+}
