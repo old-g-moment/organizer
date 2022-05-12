@@ -1,0 +1,44 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:tailwindcss/recommended",
+    "plugin:storybook/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint", "prettier", "tailwindcss", "testing-library", "jest-dom"],
+  "rules": {
+    "prettier/prettier": ["off"],
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-props-no-spreading": "warn",
+    "react/require-default-props": "off"
+  },
+  "ignorePatterns": [
+    "node_modules",
+    ".storybook",
+    "jest.config.js",
+    "jest.setup.js",
+    "postcss.config.js",
+    "rollup.config.js",
+    "*.stories.*",
+    "*.test.*",
+    "tailwind.config.js"
+  ]
+}

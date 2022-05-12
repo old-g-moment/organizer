@@ -1,2 +1,6 @@
 node_modules
 .next
+packages/*/lib
+*.log
+lib/*
+.rollup.cache

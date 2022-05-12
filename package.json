@@ -1,6 +1,6 @@
 {
-  "name": "@organizer/root",
-  "version": "1.0.0",
+  "name": "@g.organizer/root",
+  "version": "0.0.0",
   "description": "This will be updated",
   "private": true,
   "workspaces": [
@@ -8,13 +8,14 @@
   ],
   "scripts": {
     "dev": "lerna run dev --parallel",
-    "test": "lerna run test",
-    "test:watch": "lerna run test:watch",
-    "build": "lerna run build",
-    "lint": "lerna run lint",
-    "lint:fix": "lerna run lint:fix",
+    "test": "lerna run test --parallel",
+    "test:watch": "lerna run test:watch --parallel",
+    "build": "yarn lint:fix && yarn:test && lerna run build --parallel",
+    "lint": "lerna run lint --parallel",
+    "lint:fix": "lerna run lint:fix --parallel",
     "prepare": "husky install",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "publish": "yarn build && yarn lerna publish"
   },
   "config": {
     "commitizen": {
