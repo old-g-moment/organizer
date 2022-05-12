@@ -3,8 +3,17 @@
   "compilerOptions": {
     "jsx": "react",
     "declaration": true,
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "isolatedModules": true,
+    "baseUrl": "."
   },
   "include": ["src/**/*"],
-  "exclude": ["src/**/*.test.tsx", "src/**/*.test.ts", "src/**/*.stories.tsx"]
+  "exclude": ["src/**/*.test.tsx", "src/**/*.test.ts", "src/**/*.stories.tsx", "lib", "node_modules"]
 }

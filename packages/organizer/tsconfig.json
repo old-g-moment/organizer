@@ -15,6 +15,14 @@
     "declaration": true,
     "noEmit": true
   },
+  "paths": {
+    // Declare deps here (keep them in sync with what
+    // you defined in the package.json)
+    // PS: path are relative to baseUrl
+    "@g.organizer/components/*": ["../components/src/*"],
+    // if you have a barrel in ui-lib
+    "@g.organizer/components": ["../components/src/index"]
+  },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

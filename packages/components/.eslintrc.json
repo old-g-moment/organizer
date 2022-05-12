@@ -30,5 +30,15 @@
     "react/jsx-props-no-spreading": "warn",
     "react/require-default-props": "off"
   },
-  "ignorePatterns": ["node_modules", ".storybook"]
+  "ignorePatterns": [
+    "node_modules",
+    ".storybook",
+    "jest.config.js",
+    "jest.setup.js",
+    "postcss.config.js",
+    "rollup.config.js",
+    "*.stories.*",
+    "*.test.*",
+    "tailwind.config.js"
+  ]
 }
