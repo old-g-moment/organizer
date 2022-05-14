@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 public interface JwtDataGetter {
 
-  Map<String, String> getCoreData(@NotNull DecodedJWT token)
+  String getEmailFromJWT(@NotNull DecodedJWT token)
       throws IllegalAccessException;
 
   List<String> getDataFromClaims(@NotNull DecodedJWT token,

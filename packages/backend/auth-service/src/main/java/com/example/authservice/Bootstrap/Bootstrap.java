@@ -17,7 +17,6 @@ public class Bootstrap implements CommandLineRunner {
 
   @Override
   public void run(String... args) {
-    System.out.println("DUpa");
     final User user = new User(1L, "teodr@gmail.com", "token", "dupa1234");
 
     userRepo.save(user);

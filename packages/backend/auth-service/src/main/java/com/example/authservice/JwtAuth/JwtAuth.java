@@ -38,8 +38,8 @@ public class JwtAuth extends WebSecurityConfigurerAdapter {
     UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
     CorsConfiguration configuration = new CorsConfiguration();
     configuration.setAllowCredentials(true);
-    configuration.addAllowedOrigin("*");
-    configuration.addAllowedMethod("*");
+    configuration.addAllowedOrigin("/auth/*");
+    configuration.addAllowedMethod("POST GET DELETE PUT");
     urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", configuration);
     return new CorsFilter(urlBasedCorsConfigurationSource);
   }

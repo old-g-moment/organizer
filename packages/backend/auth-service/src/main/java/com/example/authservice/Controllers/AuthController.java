@@ -1,6 +1,6 @@
 package com.example.authservice.Controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 public class AuthController {
 
-  @GetMapping
-  public String get() {
-    System.out.println("TEST");
-    return "Auth get";
+  @PostMapping("/login")
+  public String login() {
+    return "Auth login - POST";
   }
 }
