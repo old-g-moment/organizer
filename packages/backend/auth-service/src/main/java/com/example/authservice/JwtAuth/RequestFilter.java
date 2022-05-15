@@ -31,6 +31,7 @@ public class RequestFilter extends OncePerRequestFilter {
   private String issuer;
   private final UserRepo userRepo;
   private final Logger logger = LoggerFactory.getLogger(RequestFilter.class);
+
   public RequestFilter(@NotNull UserRepo userRepo) {
     this.userRepo = userRepo;
   }
@@ -50,8 +51,6 @@ public class RequestFilter extends OncePerRequestFilter {
       DecodedJWT decodedJWT = JwtValidatorImpl.getInstance(secret, issuer).checkJwtToken(token);
       String email = JwtDataGetterImpl.getJwtDataGetter().getEmailFromJWT(decodedJWT);
       final Optional<User> userByEmail = userRepo.findByemail(email);
-      logger.info(userByEmail.toString());
-      System.out.println("DUPA");
       userByEmail.map((user) -> {
         logger.info(user.getEmail());
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
@@ -63,7 +62,6 @@ public class RequestFilter extends OncePerRequestFilter {
       }).orElseThrow(() -> new IllegalAccessException("User with passed token doesn't exist"));
       filterChain.doFilter(request, response);
     } catch (final JWTVerificationException | IllegalArgumentException | IllegalAccessException error) {
-      System.out.println("DUPA1");
       logger.error(String.format("User with this token: %s \ncannot be authorized", token));
       logger.error(String.format("Error message: %s", error.getMessage()));
       error.printStackTrace();

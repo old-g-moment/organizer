@@ -24,9 +24,7 @@ public class JwtAuth extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http = http.cors().and().csrf().disable();
-    http = http.exceptionHandling().authenticationEntryPoint((req, res, ex) -> {
-      res.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
-    }).and();
+    http = http.exceptionHandling().authenticationEntryPoint((req, res, ex) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage())).and();
     http = http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and();
 
     http.authorizeRequests().anyRequest().authenticated();
